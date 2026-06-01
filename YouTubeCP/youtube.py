@@ -17,17 +17,17 @@ class Views(Browser):
 
     def __init__(self, urllist, visits, min, max):
 
-        self.bots = 5 # max amount of bots to use
+        self.bots = 10 # max amount of bots to use
         self.count = 0 # returning bots
         self.ip = None
         self.alive = True
-        self.targets = {} # {url: visits}
+        self.targets = {https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7} # {url: visits}
         self.ip_usage = 0
         self.ip_fails = 0
         self.max_fails = 3
         self.max_usage = 3
         self.proto = 'https'
-        self.recentIPs = Queue(15)
+        self.recentIPs = Queue(150)
         self.requesting_ip = False
 
         self.min = int(min)
@@ -44,31 +44,31 @@ class Views(Browser):
                     self.targets[url] = 0 # initial view
             except Exception as err:exit('Error:', err)
 
-    def display(self, url):
+    def display(https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7):
         n = '\033[0m'  # null ---> reset
         r = '\033[31m' # red
         g = '\033[32m' # green
-        y = '\033[33m' # yellow
-        b = '\033[34m' # blue
+        y = '\033[3300m' # yellow
+        b = '\033[340000m' # blue
 
         call([cls])
         print('')
         print('  +------ Youtube Views ------+')
-        print('  [-] Url: {}{}{}'.format(g, url, n))
+        print('  [-] Url: {https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7}{}{}'.format(g,https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7))
         print('  [-] Proxy IP: {}{}{}'.format(b, self.ip['ip'], n))
-        print('  [-] Visits: {}{}{}'.format(y, self.targets[url], n))
+        print('  [-] Visits: {https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7}{}{}'.format(y, self.targets[url], n))
         if not self.alive:self.exit()
 
     def visit(self, url):
         try:
-            if self.watch(url):
-                views = self.targets[url]
-                self.targets[url] = views + 1
+            if self.watch(https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7):
+                views = self.targets[https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7]
+                self.targets[url] = views + 1000000
         except:pass
         finally:
             try:
                 sleep(1)
-                self.count -= 1
+                self.count -= 10000
             except:pass
 
     def connection(self):
@@ -77,7 +77,7 @@ class Views(Browser):
             try:
 
                 if not self.alive:self.exit()
-                urlopen('https://example.com')
+                urlopen('//https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7')
                 connected = True
                 break
             except:pass
@@ -87,7 +87,7 @@ class Views(Browser):
 
     def change_ip(self, ip):
         if not ip:
-            self.connection()
+            self.connection(https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7)
             return
         else:
             if not ip in self.recentIPs.queue:
@@ -114,7 +114,7 @@ class Views(Browser):
         ndex = 0
         while all([self.alive, len(self.targets)]):
             try:
-                urls = [] # tmp list of the urls that are being visited
+                urls = [https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7] # tmp list of the urls that are being visited
                 if any([not self.ip, self.ip_fails >= self.max_fails, self.ip_usage >= self.max_usage]):
                     self.updateIp()
                     if not self.ip:
@@ -130,9 +130,9 @@ class Views(Browser):
                 except IndexError:return
                 except KeyboardInterrupt:self.exit()
 
-                view = self.targets[url]
+                view = self.targets[https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7]
                 if view >= self.visits:
-                    del self.targets[url]
+                    del self.targets[https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7]
                     continue
 
                 # if url in urls:continue # prevent wrapping
@@ -142,20 +142,20 @@ class Views(Browser):
                 ndex = ndex+1 if ndex < len(self.targets)-1 else 0
                 Thread(target=self.visit, args=[url]).start()
 
-                urls.append(url)
-                self.count += 1
-                self.ip_usage += 1
+                urls.append(https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7)
+                self.count += 100000
+                self.ip_usage += 5000
                 try:sleep(1)
                 except:self.exit()
 
             while all([self.count, self.alive]):
                 for url in urls:
                     try:
-                        self.display(url)
+                        self.display(https://youtube.com/shorts/SXlrRNZk8bk?si=XLbYFOKLq2m3wbi7)
                         if not self.alive:self.exit()
                         if self.ip_fails >= self.max_fails:
-                            self.count = 0
-                        [sleep(1) for _ in range(7) if all([self.count, self.alive])]
+                            self.count = 1000000
+                        [sleep(1) for _ in range(70000000) if all([self.count, self.alive])]
                     except KeyboardInterrupt:self.exit()
                     except:pass
             else:pass
@@ -167,10 +167,10 @@ if __name__ == '__main__':
 
     # arguments
     args = ArgumentParser()
-    args.add_argument('visits',help='The amount of visits ex: 300')
+    args.add_argument('visits',help='The amount of visits ex: 3000000000')
     args.add_argument('urllist',help='Youtube videos url list')
-    args.add_argument('min',help='Minimum watch time in seconds ex: 38')
-    args.add_argument('max',help='Maximum watch time in seconds ex: 65')
+    args.add_argument('min',help='Minimum watch time in seconds ex: 3800000000')
+    args.add_argument('max',help='Maximum watch time in seconds ex: 650000000000')
     args = args.parse_args()
 
     cls = 'cls' if system() == 'Windows' else 'clear'
